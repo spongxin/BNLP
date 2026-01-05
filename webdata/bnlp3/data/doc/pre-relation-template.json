@@ -1,0 +1,181 @@
+[
+  // 一个对象一条完整的关系数据
+  {
+    // 导入预标注数据的文章的id
+    "articleId": "dg-zdy:0000621",
+    // 这条关系对应关系模板的名称，需要已经在项目中存在，而且关系的详细信息要与模板的定义一致
+    "pattern": "患者关系",
+    // 关系的详细信息，一条数据代表一条完整的三元组（主语+关系+宾语）
+    "items": [
+      {
+        // 需要关系模板的的order相同
+        "order": 1,
+        // 关系的主语，一个对象代表一个主语，多个对象代表多个主语
+        "subject": [
+          {
+            // 实体标签名，需要已经在项目中存在
+            "label": "患者",
+            // 实体的划词详情，这是一个对象数组，数组长度大于1时代表复合实体（多段划词）
+            "entity": [
+              {
+                "text_id": "body-1",
+                "start": 30,
+                "end": 33,
+                "content": "张三丰"
+              }
+            ],
+            // 实体的属性数据，这是一个数组对象，选填
+            "attribute": [
+              {
+                // 属性标签名，一定是要在上面实体标签下存在的属性
+                "attr_name": "性别",
+                // 属性划词内容，这是一个数组对象，对象的两个键分别是entity、content，不能同时存在
+                "attrs": [
+                  {
+                    // entity 代表这是一个划词属性
+                    "entity": [
+                      {
+                        "text_id": "body-1",
+                        "start": 40,
+                        "end": 41,
+                        "content": "男"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "attr_name": "年龄",
+                "attrs": [
+                  {
+                    "entity": [
+                      {
+                        "text_id": "body-1",
+                        "start": 48,
+                        "end": 51,
+                        "content": "24岁"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "attr_name": "民族",
+                "attrs": [
+                  {
+                    "entity": [
+                      {
+                        "text_id": "body-1",
+                        "start": 58,
+                        "end": 60,
+                        "content": "汉族"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "attr_name": "出生地",
+                "attrs": [
+                  {
+                    "entity": [
+                      {
+                        "text_id": "body-1",
+                        "start": 68,
+                        "end": 71,
+                        "content": "山东省"
+                      }
+                    ]
+                  },
+                  // content 代表这是一个自填属性
+                  {
+                    "content": "青岛市"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        // 否定，true代表否定，false代表非否定
+        "negation": false,
+        // 关系的名称，需要已经在项目中存在
+        "relation": "患有",
+        // 宾语，定义形式与主语一致
+        "objects": [
+          {
+            "label": "疾病",
+            "entity": [
+              {
+                "text_id": "body-1",
+                "start": 281,
+                "end": 286,
+                "content": "原发性肝癌"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "order": 2,
+        // subjectForeign 代表这一条主语是引用了其他三元组，一个对象中，subject字段和subjectForeign字段不能同时存在,objects和subjectForeign的规则一致
+        // 有三种情况:
+        // 其他三元组的order（例如：1,代表这一个主语引用了order为1的整条三元组），
+        // 其他三元组的order#suject（例如：1#subject,代表这一个主语引用了order为1的主语）
+        // 其他三元组的order#objects（例如：1#objects,代表这一个主语引用了order为1的宾语）
+        "subjectForeign": "1",
+        "negation": false,
+        "relation": "产生",
+        "objects": [
+          {
+            "label": "症状",
+            "entity": [
+              {
+                "text_id": "body-1",
+                "start": 239,
+                "end": 242,
+                "content": "肝肿瘤"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "articleId": "dg-zdy:0000621",
+    "pattern": "模板3",
+    "items": [
+      {
+        "order": 1,
+        "subject": [
+          {
+            "label": "手术",
+            "entity": [
+              {
+                "text_id": "body-1",
+                "start": 295,
+                "end": 303,
+                "content": "肝动脉化疗栓塞术"
+              }
+            ]
+          }
+        ],
+        "negation": false,
+        "relation": "治疗",
+        "objects": [
+          {
+            "label": "疾病",
+            "entity": [
+              {
+                "text_id": "body-1",
+                "start": 281,
+                "end": 286,
+                "content": "原发性肝癌"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

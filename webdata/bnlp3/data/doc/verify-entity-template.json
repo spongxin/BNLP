@@ -1,0 +1,61 @@
+[{
+    "article_id": "dg-zdy:0000621",
+    "entities": [
+      {
+        "label": "患者",
+        "entity": [
+          {
+            "text_id": "body-1",
+            "start": 30,
+            "end": 33,
+            "content": "张三丰"
+          }
+        ],
+       },
+      {
+        "label": "疾病",
+        "entity": [
+          {
+            "text_id": "body-1",
+            "start": 281,
+            "end": 286,
+            "content": "原发性肝癌"
+          }
+        ]
+      },
+      {
+        "label": "手术",
+        "entity": [
+          {
+            "text_id": "body-1",
+            "start": 295,
+            "end": 303,
+            "content": "肝动脉化疗栓塞术"
+          }
+        ]
+      },
+      {
+        "label": "症状",
+        "entity": [
+          {
+            "text_id": "body-1",
+            "start": 239,
+            "end": 242,
+            "content": "肝肿瘤"
+          }
+        ]
+      },
+      {
+        "label": "症状",
+        "entity": [
+          {
+            "text_id": "body-1",
+            "start": 239,
+            "end": 243,
+            "content": "肝肿瘤1"
+          }
+        ]
+      }
+    ]
+  }
+]

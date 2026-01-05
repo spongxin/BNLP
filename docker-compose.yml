@@ -1,0 +1,95 @@
+version: "3.8"
+
+services:
+  bnlp-nginx:
+    restart: unless-stopped
+    image: nginx:1.24
+    container_name: bnlp-nginx
+    ports:
+      - "8081:80"
+    volumes:
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/other:/etc/nginx/other
+      - ./nginx/log:/var/log/nginx
+    environment:
+      TZ: Asia/Shanghai
+      LANG: C.UTF-8
+    depends_on:
+      - bnlp-tomcat
+
+  bnlp-redis:
+    restart: unless-stopped
+    image: redis:6.2
+    container_name: bnlp-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - ./redis/data:/data
+    environment:
+      - LANG=C.UTF-8
+      - TZ=Asia/Shanghai
+    expose:
+      - "6379"
+
+  bnlp-mysql:
+    restart: unless-stopped
+    image: mysql:5.7.44
+    container_name: bnlp-mysql
+    environment:
+      LANG: C.UTF-8
+      TZ: Asia/Shanghai
+      MYSQL_DATABASE: bnlp
+      MYSQL_ROOT_PASSWORD: bnlp123456
+    expose:
+      - "3306"
+    volumes:
+      - ./mysql/db:/var/lib/mysql
+      - ./mysql/logs:/logs
+      - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./mysql/conf:/etc/mysql/conf.d
+
+  bnlp-mongo:
+    restart: unless-stopped
+    container_name: bnlp-mongo
+    image: mongo:4.4
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    command: mongod --auth
+    expose:
+      - 27017
+    volumes:
+      - ./mongo/data:/data/db
+      - ./mongo/backup:/backup
+    environment:
+      - LANG=C.UTF-8
+      - TZ=Asia/Shanghai
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root123456
+
+  bnlp-tomcat:
+    restart: unless-stopped
+    build: ./tomcat
+    image: bnlp-tomcat:latest  # 显式指定镜像名称和标签
+    container_name: bnlp-tomcat
+    pull_policy: "missing"
+    expose:
+      - 8080
+    volumes:
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
+      - ./tomcat/conf:/usr/local/tomcat/conf
+      - ./tomcat/logs:/usr/local/tomcat/logs
+      # dataHome 附件
+      - ./webdata:/data
+    environment:
+      - LANG=C.UTF-8
+      - TZ=Asia/Shanghai
+    depends_on:
+      - bnlp-mysql
+      - bnlp-redis
+      - bnlp-mongo
+
+networks:
+  default:
+    name: bnlp-app_default
