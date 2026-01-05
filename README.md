@@ -101,7 +101,3 @@ If you use BNLP in your research, please cite our work:
 }
 
 ```
-
----
-
-**Would you like me to generate a detailed `CONTRIBUTING.md` file or a specific `API_DOCUMENTATION.md` for this repository?**

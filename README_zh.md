@@ -101,8 +101,3 @@ docker-compose up -d
 }
 
 ```
-
----
-
-**需要我为此仓库生成详细的 `CONTRIBUTING.md` 文件或特定的 `API_DOCUMENTATION.md` 吗？**
-
