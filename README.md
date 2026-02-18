@@ -88,16 +88,3 @@ docker-compose up -d
 4. Access the UI at `http://localhost:8080`.
 
 ---
-
-## 📜 Citation
-
-If you use BNLP in your research, please cite our work:
-
-```bibtex
-@article{BNLP2026,
-  title={BNLP: A Systematic LLM-Assisted Platform for High-Quality Natural Language Annotation},
-  author={Zhuang, Xinhao and Tian, Qiongyu and et al.},
-  year={2026}
-}
-
-```
