@@ -89,15 +89,3 @@ docker-compose up -d
 
 ---
 
-## 📜 引用
-
-如果您在研究中使用 BNLP，请引用我们的工作：
-
-```bibtex
-@article{BNLP2026,
-  title={BNLP: A Systematic LLM-Assisted Platform for High-Quality Natural Language Annotation},
-  author={Zhuang, Xinhao and Tian, Qiongyu and et al.},
-  year={2026}
-}
-
-```
