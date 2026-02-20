@@ -4,7 +4,7 @@
 
 **BNLP** is a natural language annotation platform designed to systematically embed Large Language Models (LLMs) into a controllable, evaluable, and reproducible human-in-the-loop workflow. By treating LLM outputs as intermediate states for human refinement, BNLP bridges the gap between raw AI generation and high-quality "Gold Standard" data.
 
-![](resources/image.jpg)
+![](resources/1771596496726.png)
 ![](resources/image-2.jpg)
 
 
